@@ -12,7 +12,10 @@ st.set_page_config(
     layout="centered"
 )
 
-GROQ_API_KEY = "your-api-key"  # Replace with your actual API key
+#GROQ_API_KEY = "your-api-key"  # Replace with your actual API key
+
+GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
+
 client = Groq(api_key=GROQ_API_KEY)
 
 # initialize the chat history as streamlit session state of not present already
