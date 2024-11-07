@@ -12,15 +12,8 @@ st.set_page_config(
     layout="centered"
 )
 
-working_dir = os.path.dirname(os.path.abspath(__file__))
-config_data = json.load(open(f"{working_dir}/config.json"))
-
-GROQ_API_KEY = config_data["GROQ_API_KEY"]
-
-# save the api key to environment variable
-os.environ["GROQ_API_KEY"] = GROQ_API_KEY
-
-client = Groq()
+GROQ_API_KEY = "your-api-key"  # Replace with your actual API key
+client = Groq(api_key=GROQ_API_KEY)
 
 # initialize the chat history as streamlit session state of not present already
 if "chat_history" not in st.session_state:
@@ -51,7 +44,7 @@ if user_prompt:
     ]
 
     response = client.chat.completions.create(
-        model="llama-3.1-8b-instant",
+        model="llama-3.1-70b-versatile",
         messages=messages
     )
 
